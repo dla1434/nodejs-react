@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "coffee-script": "^1.12.7",
     "react-scripts": "^0.9.5",
     "standard": "^10.0.2",
     "superagent": "^3.5.2"
