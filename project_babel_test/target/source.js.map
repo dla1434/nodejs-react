@@ -1,0 +1,1 @@
+{"version":3,"sources":["../source/source.js"],"names":["x3","n","alertt"],"mappings":"aAAA,GAAMA,IAAK,QAALA,GAAK,CAACC,CAAD,QAAOA,GAAI,CAAX,EAAX,CAEAC,OAAO,OAAP","file":"source.js","sourcesContent":["const x3 = (n) => n * 5\r\n\r\nalertt(\"hello\")"]}
