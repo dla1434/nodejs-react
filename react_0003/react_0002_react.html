@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    setInterval(() => {
+      const date = new Date()
+      const hour = date.getHours()
+      const min = date.getMinutes()
+      const sec = date.getSeconds()
+
+      //크롬 개발자 모드에서 보면, h1 태그에서 {sec} 부분만 깜박인다.
+      //즉 react에서는 변경이 되는 부분만 치환이 된다.
+      //가상돔을 사용해서 더 빠른 성능을 낼 수 있다.
+      const element = <h1>{hour}:{min}:{sec}</h1>
+      ReactDOM.render(element, root)
+    }, 1000)
+  </script>
+</body>
+
+</html>

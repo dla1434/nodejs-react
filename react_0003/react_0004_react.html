@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const root = document.getElementById('root')
+    const z2 = (v) => {
+      const s = '00' + v
+      return s.substr(s.length-2, 2)
+    }
+
+    setInterval(() => {
+      const date = new Date()
+      const hour = date.getHours()
+      const min = date.getMinutes()
+      const sec = date.getSeconds()
+      const lines = []
+      const style0 = {color:'brown', fontSize:40 } //바닐라 스크립크의 경우 20px, 즉 픽셀을 붙여줘야 하지만
+      const style1 = {color:'red', fontSize:40}    //리엑트의 경우 20만 입력해도 픽셀이 붙는다.
+      const binStr = z2(hour) + z2(min) + z2(sec) //06:04:00 --> 060400
+      for(let i=0; i < binStr.length; i++){
+        const v = parseInt(binStr.substr(i, 1))  //0,6,0,4,0,0 : loop로 한자씩 가져옴
+        const bin = '0000' + v.toString(2)       //2의 의미는 v의 값을 이진수를 출력해 주라는 의미, 0000 붙인건 4자리 포멧 보정을 위함
+        const bin8 = bin.substr(bin.length-4, 4)   //4자리로 자르기
+
+        for(let j=0; j < bin8.length; j++){
+          if(bin8.substr(j, 1) === '0'){
+            lines.push(<span style={style0}>○</span>)
+          }
+          else{
+            lines.push(<span style={style1}>●</span>)
+          }
+        }
+        lines.push(<br />)
+      }
+     
+      const element = <div>{lines}</div>
+      ReactDOM.render(element, root)
+    }, 1000)
+  </script>
+</body>
+
+</html>

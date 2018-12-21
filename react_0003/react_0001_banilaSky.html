@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+</head>
+
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const root = document.getElementById('root')
+    setInterval(() => {
+      const date = new Date()
+      const hour = date.getHours()
+      const min = date.getMinutes()
+      const sec = date.getSeconds()
+
+      //크롬 개발자 모드에서 보면, div, h1 태그가 깜박인다.
+      //즉 모든 태그가 변경이 된다.
+      const string = `${hour}:${min}:${sec}`
+      root.innerHTML = `<h1>${string}</h1>`
+    }, 1000)
+  </script>
+</body>
+
+</html>
