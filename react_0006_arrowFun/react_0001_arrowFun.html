@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <!-- 
+    Component 하위에 변수나, 함수 선언 시 에러 발생
+    에러 문구) Uncaught SyntaxError: embedded: Unexpected token (3:8)
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+  -->
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class ClassA extends React.Component {
+      render () {
+        return <h1 style={{color: this.props.color}}>{this.props.children}</h1>
+      }
+    }
+
+    //일반적인 함수 선언
+    function NormalFun (props) {
+      return <h1 style={{color: props.color}}>{props.children}</h1>
+    }
+
+    //익명함수 사용 함수 선언 
+    const AnonymousFun = function (props) {
+      return <h1 style={{color: props.color}}>{props.children}</h1>
+    }
+
+    //화살표 함수
+    const ArrowFun = (props) => <h1 style={{color: props.color}}>{props.children}</h1>
+
+    const element = <div>
+        <ClassA color="red">Hellow React</ClassA>
+        <NormalFun color="red">Hellow React</NormalFun>
+        <AnonymousFun color="red">Hellow React</AnonymousFun>
+        <ArrowFun color="red">Hellow React</ArrowFun>
+      </div>
+    ReactDOM.render(element, root)
+  </script>
+</body>
+
+</html>

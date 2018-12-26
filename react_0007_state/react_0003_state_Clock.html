@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class Clock extends React.Component {
+      constructor (props, context, updater) {
+        super(props, context, updater)
+
+        this.state = { now: new Date() }
+        setInterval(() => {
+          this.setState({now : new Date()})
+        }, 1000);
+      }
+
+      render () {
+        const now = this.state.now
+        const hh = this.fmt(now.getHours())
+        const mm = this.fmt(now.getMinutes())
+        const ss = this.fmt(now.getSeconds())
+        return <h1>{hh}:{mm}:{ss}</h1>
+      }
+
+      //숫자를 두 자리로 포멧팅 하기 위해서 00을 붙여주고, 뒤에서 두 자리만 잘라서 2자리로 고정
+      //ex) 001 --> 01
+      fmt (v) {
+        const s = '00' + v
+        return s.substr(s.length -2, 2)
+      }
+    }
+    
+    const element = <Clock />
+    ReactDOM.render(element, root)
+  </script>
+</body>
+
+</html>
