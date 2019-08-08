@@ -1,4 +1,5 @@
-// 덧셈과 곱셈하는 함수
+
+//function 앞에 export를 붙여주면 된다.
 export function add (a, b) {
   return a + b
 }
@@ -7,6 +8,8 @@ export function mul (a, b) {
   return a * b
 }
 
-// export class Test {}
+//class에서도 function가 동일하게 export를 붙여주면 된다.
+export class Test {}
 
-// export const test = 10
+//const도 function가 동일하게 export를 붙여주면 된다.
+export const test = 10
