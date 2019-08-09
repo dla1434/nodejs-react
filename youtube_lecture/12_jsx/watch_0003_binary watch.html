@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    /*
+    04:29:53
+    > 2진수로 표시
+    0000 0100 : 0010 1001 : 0101 0011
+    */
+
+    const root = document.getElementById('root')
+    const z2 = (v) => {
+      const s = '00' + v
+      return s.substr(s.length-2, 2)
+    }
+
+    setInterval(() => {
+      const date = new Date()
+      const hour = date.getHours()
+      const min = date.getMinutes()
+      const sec = date.getSeconds()
+      
+      const lines = []
+
+      //시분초를 :기호 없이 문자열로 받는다.
+        //ex) 06:04:00 --> 060400
+      const binStr = z2(hour) + z2(min) + z2(sec) 
+
+      for(let i=0; i < binStr.length; i++){
+        //substr를 사용해서 한글자씩 자르고..이 값을 parseInt를 Int형으로 변환
+          //ex) 0,6,0,4,0,0 : loop로 한자씩 가져옴
+        const v = parseInt(binStr.substr(i, 1))  
+        //v.toString(2) : 변수의 값을 2진수 형태로 변환
+          //2의 의미는 v의 값을 이진수를 출력해 주라는 의미, 즉 0000 붙인건 4자리 포멧 보정을 위함
+        const bin = '0000' + v.toString(2)      
+        //4자리로 자리수 보정
+        const bin8 = bin.substr(bin.length-4, 4)
+
+        for(let j=0; j < bin8.length; j++){
+          if(bin8.substr(j, 1) === '0'){
+            lines.push(<span>○</span>)
+          }
+          else{
+            lines.push(<span>●</span>)
+          }
+        }
+        //br 뒤에 닫는 태그가 없는 경우 에러가 발생되니 주의
+          //ex) <br>은 에러 발생
+        lines.push(<br />)
+      }
+     
+      const element = <div>{lines}</div>
+      ReactDOM.render(element, root)
+    }, 1000)
+  </script>
+</body>
+
+</html>
