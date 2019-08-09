@@ -5,17 +5,22 @@
   <meta charset="utf-8">
   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="text/babel">
     function Custom (props) {
+      //element에서 정의한 property는 매개변수 props에 json 객체 형태처럼 사용할 수 있다.
+        //{{color: props.color}} : 스타일은 객체 형태로 사용되기 때문에 {{ }} 안에 사용 된다.
+        //{props.title} : 기존 변수값 호출과 동일한 방식으로 사용된다.
+        //{props.children} : <Custom>이 부분에 선언된 값은 children으로 가져올 수 있다.</Custom>
       return <h1 style={{color: props.color}}>{props.title} {props.children} Hello World</h1>
     }
     
     const root = document.getElementById('root')
+    //property는 태그의 속성처럼 정의할 수 있다.
     const element = <Custom title="name" color="red">custom contents도 호출하기</Custom>
     ReactDOM.render(element, root)
   </script>

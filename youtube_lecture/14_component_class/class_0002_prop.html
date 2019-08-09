@@ -5,18 +5,19 @@
   <meta charset="utf-8">
   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    function Custom (props) {
-      return <h1>Hello World</h1>
+    class Test extends React.Component {
+      render () {
+        return <h1 style={{color: this.props.color}}>{this.props.children}</h1>
+      }
     }
-    
-    const root = document.getElementById('root')
-    const element = <Custom></Custom>
+
+    const element = <Test color="red">Helolo Component</Test>
     ReactDOM.render(element, root)
   </script>
 </body>

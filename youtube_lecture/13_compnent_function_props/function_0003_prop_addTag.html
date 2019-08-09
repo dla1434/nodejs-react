@@ -5,12 +5,15 @@
   <meta charset="utf-8">
   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="text/babel">
+    //{props.children} : 
+      //<Custom>이 부분에 선언된 값은 children으로 가져올 수 있다.</Custom>
+      //<Custom> 하위에는 일반 텍스트 스트링도 되지만..아래 처럼 <h1>, <p>처럼 태그를 가져올 수도 있다.
     function Card (props) {
       return <div>
         <span>2018년 01월 30일 화요일</span>
@@ -21,10 +24,12 @@
     }
     
     const root = document.getElementById('root')
+    //<Card> 컴포넌트 하위에 기사 내용에 관련된 태그를 추가해보자
     const element = <Card author="Noname">
       <h1>Lorem ipsum dolor sit amet</h1>
       <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus efficitur lacinia arcu vitae facilisis. Praesent vitae purus fringilla, sollicitudin nisl et, tempor arcu. Mauris efficitur vehicula neque sit amet auctor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur luctus vestibulum volutpat. Aliquam eu nulla non elit pharetra maximus a et ex. Etiam ex dui, sollicitudin eget suscipit a, eleifend vitae lectus.</p>
     </Card>
+
     ReactDOM.render(element, root)
   </script>
 </body>

@@ -20,7 +20,8 @@
   <script type="text/babel">
     class Test extends React.Component {
       a = 10
-
+      
+      //클래스이기 때문에 하위에 함수를 추가로 정의할 수 있다.
       hello () {
         return 20
       }
@@ -28,7 +29,7 @@
       render () {
         alert(this.a)
         //this 생략 시 오류가 발생된다.
-        //에러 내용) ReferenceError: hello is not defined
+          //에러 내용) ReferenceError: hello is not defined
         alert(this.hello())
         return <h1 style={{color: this.props.color}}>{this.props.children}</h1>
       }

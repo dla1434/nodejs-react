@@ -5,17 +5,18 @@
   <meta charset="utf-8">
   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    const cardStyle = {
-      border: "1px solid black",
-      padding: 10
-    }
     function Card (props) {
+      const cardStyle = {
+        border: "1px solid black",
+        padding: 10
+      }
+
       return <div style={cardStyle}>
         <span>2018년 01월 30일 화요일</span>
         <hr/>

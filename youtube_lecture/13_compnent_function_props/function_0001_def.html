@@ -5,19 +5,19 @@
   <meta charset="utf-8">
   <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
   <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.38/browser.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    class Test extends React.Component {
-      render () {
-        return <h1>Hello Component</h1>
-      }
+    function Custom (props) {
+      return <h1>Hello World</h1>
     }
-
-    const element = <Test />
+    
+    const root = document.getElementById('root')
+    //위에서 정의한 function은 태그 요소처럼 정의할 수 있다.
+    const element = <Custom></Custom>
     ReactDOM.render(element, root)
   </script>
 </body>
