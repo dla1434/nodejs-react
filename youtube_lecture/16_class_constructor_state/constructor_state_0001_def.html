@@ -11,14 +11,21 @@
 <body>
   <div id="root"></div>
   <script type="text/babel">
-    //React에서 이벤트를 사용할때는 camelCase를 사용한다.
-    //ex) js에서 onclick --> onClick
-    const testHandler = () => {
-      alert("hello")
-    }
+    class TestA extends React.Component {
+      constructor (props, context, updater) {
+        super(props, context, updater)
 
-    //클릭 이벤트가 발생됐을때, testHandler 메소르를 실행해라
-    const element = <h1 onClick={testHandler}>Click</h1>
+        this.state = { text: '안녕하세요'}
+      }
+
+      //Class에서는 반드시 render를 정의해서 return 해야한다.
+      render () {
+        return <h1>{this.state.text}</h1>
+      }
+    }
+    
+    //컴포넌트를 출력하는 부분
+    const element = <TestA color="red">Hellow React</TestA>
     ReactDOM.render(element, root)
   </script>
 </body>

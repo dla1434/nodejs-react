@@ -26,6 +26,9 @@
         const hh = this.fmt(now.getHours())
         const mm = this.fmt(now.getMinutes())
         const ss = this.fmt(now.getSeconds())
+        //주의) this을 붙이지 않고 호출하면 에러가 발생된다.
+          //에러 내용 : Uncaught ReferenceError: fmt is not defined
+        //const ss = fmt(now.getSeconds())
         return <h1>{hh}:{mm}:{ss}</h1>
       }
 

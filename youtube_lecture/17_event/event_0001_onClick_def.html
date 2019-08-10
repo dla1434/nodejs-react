@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    //React에서 이벤트를 사용할때는 camelCase를 사용한다.
+      //ex) js에서 onclick --> onClick
+    const testHandler = () => {
+      alert("hello")
+    }
+
+    //클릭 이벤트가 발생됐을때, testHandler 메소르를 실행해라
+      //js 속성 onclick --> react에서는 onClick 형태로 사용됩니다.
+        //js : onclick="testHandler();"
+        //react : onClick={testHandler}
+    const element = <h1 onClick={testHandler}>Click</h1>
+    ReactDOM.render(element, root)
+  </script>
+</body>
+
+</html>

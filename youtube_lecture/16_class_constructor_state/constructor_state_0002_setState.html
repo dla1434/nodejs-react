@@ -29,7 +29,9 @@
           //this.state.<키>라면 상태 값만 변경된다.
           //this.setState({키:값})는 상태값 + render() + 화면에 반영까지 된다.
         setTimeout(() => {
-          this.setState({text: '안녕히 가세요~'})
+          this.setState({text: '안녕히가세요~'})
+          //this.state.<키>로 할 경우 에러는 발생하진 않지만..변경 내용이 화면에 적용되지 않습니다.
+          //this.state.text = "안녕히가세요~"
         }, 3000);
       }
 

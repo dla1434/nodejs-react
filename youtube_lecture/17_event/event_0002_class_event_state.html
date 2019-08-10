@@ -19,6 +19,7 @@
           checked: false
         }
       }
+      
       render () {
         //체크되지 않았을때 표시되는 아이콘
         //render에서 정의된 변수이고, render에서 변수를 사용할 경우 this를 안 붙여도 되는 듯
@@ -30,11 +31,14 @@
         //체크되어 있는 지 확인
         if (this.state.checked) {
           mark = '■'
-          bstyle = { fontWeight: 'bold'}
+          bstyle = { 
+            fontWeight: 'bold'
+          }
         }
 
         //클릭 이벤트 메소드 지정
         const clickHandler = (e) => {
+          //!this.state.checked로 반전) ture -> false, false -> true
           const newValue = !this.state.checked
           this.setState({
             checked: newValue

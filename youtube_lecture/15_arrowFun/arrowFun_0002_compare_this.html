@@ -22,24 +22,32 @@
       a = 10
 
       render () {
-        //class와 function에서 this 키워드의 의미는 다르다.
-        const a = function () { alert(this.a) } //undefined 출력
-        const b = () => { alert(this.a) }       //[object Object] 출력
+        //undefined 출력
+          //최신 버전 js에서는 strict mode 엄격한 모드로 동작되고
+          //function의 경우 this는 undefined가 된다.
+        const a = function () { alert(this.a) }
+        //[object Object] 출력
+          //화살표 함수의 경우 undefined가 아닌 [object Object]가 담겨지게 된다.
+          //쉽게 생각하면 상위의 this를 그대로 가지고 오게 되서..render() 밖에서 선언된 this.a
+          //즉 a 변수의 값을 가져오게 된다.
+          //이런 이유로 render() 메소드 안에서 컴포넌트를 생성하게 된다면 화살표 함수로 사용하는게 좋다.
+        const b = () => { alert(this.a) }
 
         //a는 exception 문제 발생
         try{
           a()
         }catch(e){
-          alert("a에서 문제가 발생됐습니다.")
-          alert(e)  //TypeError: Cannot read property 'a' of undefined
+          alert("A에서 문제가 발생됐습니다.")
+          //TypeError: Cannot read property 'a' of undefined
+          alert(e)
         }
 
         //b는 정상 처리
-        //
         try{
           b()
         }catch(e){
-          alert("b에서 문제가 발생됐습니다.")
+          alert("B에서 문제가 발생됐습니다.")
+          //10 출력
           alert(e)
         }
 

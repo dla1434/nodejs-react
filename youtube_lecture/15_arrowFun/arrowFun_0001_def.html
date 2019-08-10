@@ -29,21 +29,35 @@
       return <h1 style={{color: props.color}}>{props.children}</h1>
     }
 
-    //익명함수 사용 함수 선언 
+    //익명함수 사용 함수 선언
+      //함수 이름이 명시되어 있지 않는 거 이외에는 일반 함수랑 동일하다.
+      //계속 호출되는 게 아니 한번만 쓰고 안 쓰는 경우에 사용된다.
     const AnonymousFun = function (props) {
       return <h1 style={{color: props.color}}>{props.children}</h1>
     }
 
-    //화살표 함수
-    const ArrowFun = (props) => <h1 style={{color: props.color}}>{props.children}</h1>
+    //화살표 함수 - 한 줄에 함수를 정의할 경우에는 {}를 사용하지 않아도 된다
+      //return이 없다 "=>" 다음의 소스가 return 구문이다.
+    const ArrowFunTypeA = (props) => <h1 style={{color: props.color}}>{props.children}</h1>
 
+    //화살표 함수 - 여러 라인으로 함수를 정의할 경우에는 {}를 사용해야 한다.
+      //return이 없다 "=>" 다음의 소스가 return 구문이다.
+    const ArrowFunTypeB = (props) => {
+      <h1 style={{color: props.color}}>{props.children}</h1>
+    }
+
+    //여러개의 컴퍼넌트를 element 변수에 넣어야 하는 경우에 div 같은 엘리멘트 태그로 한번 감싼다.
+      //참고) 하나의 경우 : const element = <ClassA color="red">Hellow React</ClassA>
     const element = <div>
-        <ClassA color="red">Hellow React</ClassA>
-        <NormalFun color="red">Hellow React</NormalFun>
-        <AnonymousFun color="red">Hellow React</AnonymousFun>
-        <ArrowFun color="red">Hellow React</ArrowFun>
-      </div>
+      <ClassA color="red">Hellow React</ClassA>
+      <NormalFun color="red">Hellow React</NormalFun>
+      <AnonymousFun color="red">Hellow React</AnonymousFun>
+      <ArrowFunTypeA color="red">Hellow React</ArrowFunTypeA>
+      <ArrowFunTypeB color="red">Hellow React</ArrowFunTypeB>
+    </div>
+    
     ReactDOM.render(element, root)
+    
   </script>
 </body>
 

@@ -33,30 +33,25 @@
           bstyle = { fontWeight: 'bold'}
         }
 
-        //클릭 이벤트 메소드 지정
-        // const clickHandler = (e) => {
-        //   const newValue = !this.state.checked
-        //   this.setState({
-        //     checked: newValue
-        //   })
-        // }
-
-        //클릭 이벤트 메소드를 arrow -> function으로 바꾼다면 어떻게 될까?
-        //체크박스를 클릭 시 다음과 같이 에러가 발생된다.
+        //클릭 이벤트 메소드를 arrow function -> function으로 바꾼다면 어떻게 될까?
+          //체크박스를 클릭 시 다음과 같이 에러가 발생된다.
           //에러 발생 : Cannot read property 'state' of undefined
-        // const clickHandler = function (e) {
-        //   console.log(this) //undefined
-        //   //this가 undefined로 덮어써지면서, state 접근 시 에러가 발생
-        //   const newValue = !this.state.checked
-        //   this.setState({
-        //     checked: newValue
-        //   })
-        // }
+        /*
+        const clickHandler = function (e) {
+          //일반 function으로 정의하게 되면 this가 undefined로 덮어써지면서, state 접근 시 에러가 발생
+          console.log(this) //undefined
+          const newValue = !this.state.checked
+          this.setState({
+            checked: newValue
+          })
+        }
+        */
         
         //위의 에러를 해결하려면??
-        //방법1) function을 묶고 bind(this)를 호출 한다.
-          //bind는 this가 내부에서 어떤 의미를 가지게 할 지 지정한다
-          //bind(this)를 지정하면 외부의 this와 내부의 this가 같다는 걸 의미
+          //방법1) function을 ()로 묶고 bind(this)를 호출 한다.
+            //bind(this)가 내부에서 어떤 의미를 가지게 할 지 지정한다
+            //bind(this)를 지정하면 외부의 this와 내부의 this가 같다는 걸 의미
+            //즉 화살표 함수를 사용했을때와 동일하게 실행할 수 있다.
         const clickHandler = (function (e) {
           console.log(this) //undefined
           //this가 undefined로 덮어써지면서, state 접근 시 에러가 발생

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    class TestA extends React.Component {
+      constructor (props, context, updater) {
+        super(props, context, updater)
+      }
+
+      render () {
+        return <h1></h1>
+      }
+    }
+
+    const element = <TestA color="red">Hellow React</TestA>
+    const root = document.getElementById("root")
+    ReactDOM.render(element, root)
+
+  </script>
+</body>
+
+</html>
