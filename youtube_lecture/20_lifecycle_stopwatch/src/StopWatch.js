@@ -12,14 +12,18 @@ class StopWatch extends Component {
 	}
 
 	componentWillMount() {
+		console.log("componentWillMount Start")
 		this.timerId = setInterval(e => { this.tick() }, 1000)
+		console.log("componentWillMount End")
 	}
 
 	componentWillUnmount() {
+		console.log("componentWillUnmount Start")
 		clearInterval(this.timerId)	
 	}
 
 	tick() {
+		console.log("tick")
 		if (this.state.isLive) {
 			this.setState({
 				curTime: new Date().getTime()

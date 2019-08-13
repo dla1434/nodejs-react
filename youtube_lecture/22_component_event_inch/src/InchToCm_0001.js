@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ValueInput from './ValueInput'
 
-export class InchToCm extends Component {
+export default class InchToCm extends Component {
 	constructor(props) {
 		super(props)
 	
@@ -18,4 +18,4 @@ export class InchToCm extends Component {
 	}
 }
 
-export default InchToCm
+//export default InchToCm
